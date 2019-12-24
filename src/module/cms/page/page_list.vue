@@ -54,6 +54,11 @@
             </el-button>
           </template>
         </el-table-column>
+        <el-table-column label="预览" width="80">
+          <template slot-scope="scope">
+            <el-button @click="preview(scope.row.pageId)" type="text" size="samll">页面预览</el-button>
+          </template>
+        </el-table-column>
         <el-table-column label="静态化" width="80">
           <template slot-scope="scope">
             <el-button
@@ -170,6 +175,9 @@
         cmsApi.siteIdList().then((res)=>{
           this.siteList = res.queryResult.list
         })
+      },
+      preview:function (pageId) {
+        window.open("http://www.xuecheng.com/cms/preview/"+pageId)
       }
     },
     created(){
